@@ -20,8 +20,8 @@ const getMass = (object) => {
 const updatePhysics = () => {
   const objects = document.querySelectorAll(".object");
   const G = 1; // Gravitational constant
-  const restitution = 0.9; // Coefficient of restitution for collisions
-  const damping = 0.999; // Velocity damping to simulate friction
+  const restitution = 0.95; // Coefficient of restitution for collisions
+  const damping = 1; // Velocity damping to simulate friction
 
   const processedCollisions = new Set();
 
