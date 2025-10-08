@@ -2,6 +2,13 @@ import { addObject, getMass, updatePhysics } from "./object.js";
 
 const app = document.querySelector(".app");
 
+const counterObjects = () => {
+  const count = document.querySelector(".count");
+  const objects = document.querySelectorAll(".object");
+  count.textContent = objects.length;
+  requestAnimationFrame(counterObjects);
+};
+
 // Add object on click
 app.addEventListener("click", (e) => {
   const x = e.clientX;
@@ -26,4 +33,7 @@ app.addEventListener("contextmenu", (e) => {
   addObject(x, y, velocityX, velocityY);
 });
 
-setInterval(updatePhysics, 1000 / 60); // 60 FPS
+setInterval(() => {
+  updatePhysics();
+  counterObjects();
+}, 1000 / 60); // 60 FPS
