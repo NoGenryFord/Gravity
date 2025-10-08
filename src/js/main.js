@@ -2,6 +2,29 @@ import { addObject, getMass, updatePhysics } from "./object.js";
 
 const app = document.querySelector(".app");
 
+// FPS Counter
+const fpsCounter = () => {
+  let lastTime = performance.now();
+  let frameCount = 0;
+  const fpsDisplay = document.querySelector(".fps");
+
+  const updateFPS = () => {
+    const currentTime = performance.now();
+    const deltaTime = currentTime - lastTime;
+
+    frameCount++;
+    if (deltaTime > 1000) {
+      fpsDisplay.textContent = frameCount;
+      frameCount = 0;
+      lastTime = currentTime;
+    }
+
+    requestAnimationFrame(updateFPS);
+  };
+
+  requestAnimationFrame(updateFPS);
+};
+
 const counterObjects = () => {
   const count = document.querySelector(".count");
   const objects = document.querySelectorAll(".object");
@@ -35,5 +58,7 @@ app.addEventListener("contextmenu", (e) => {
 
 setInterval(() => {
   updatePhysics();
-  counterObjects();
 }, 1000 / 60); // 60 FPS
+
+counterObjects();
+fpsCounter();
