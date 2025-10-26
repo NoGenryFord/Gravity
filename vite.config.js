@@ -50,6 +50,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"), // shortcut to src folder
+      "@js": path.resolve(__dirname, "./src/js"),
     },
   },
 
