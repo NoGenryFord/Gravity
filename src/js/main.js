@@ -1,4 +1,5 @@
 import { addObject, getMass, updatePhysics } from "./object.js";
+import "/src/scss/style.scss";
 
 const app = document.querySelector(".app");
 
